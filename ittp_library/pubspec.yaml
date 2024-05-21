@@ -63,6 +63,9 @@ flutter:
     - assets/img/book2.png
     - assets/img/book3.png
     - assets/img/book4.png
+    - assets/img/faculty_logo/fif.png
+    - assets/img/faculty_logo/ftte.png
+    - assets/img/faculty_logo/frid.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
