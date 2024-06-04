@@ -6,45 +6,81 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize:
-            const Size.fromHeight(80.0), // Adjust the height as needed
-        child: Container(
-          margin: const EdgeInsets.all(8.0), // Add margin
-          decoration: BoxDecoration(
-            color: const Color(0xFFAA0000), // Custom color
-            borderRadius: BorderRadius.circular(16.0), // Border radius
-          ),
-          child: AppBar(
-            backgroundColor: Colors
-                .transparent, // Make AppBar transparent to show custom color
-            elevation: 0, // Remove AppBar shadow
-            leading: Padding(
-              padding: const EdgeInsets.all(8.0), // Adjust padding as needed
-              child: SizedBox(
-                width: 160.0, // Adjust the width to make the image bigger
-                height: 40.0, // Adjust the height to make the image bigger
+      appBar: AppBar(
+        backgroundColor: const Color.fromRGBO(170, 0, 0, 1.0),
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              Container(
+                height: 40,
+                width: 40,
                 child: Image.asset(
                   'assets/img/ittp_logo.png',
-                  fit: BoxFit
-                      .contain, // Ensure the image fits within the constraints
+                  fit: BoxFit.contain,
                 ),
               ),
-            ),
-            actions: [
-              IconButton(
-                icon: const Icon(Icons.menu),
-                color: Colors.white, // Set hamburger menu color to white
-                onPressed: () {
-                  // Handle menu button press
-                },
+              const SizedBox(width: 8.0), // Space between logo and text
+              const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Perpustakaan',
+                    style: TextStyle(
+                      fontSize: 18, // Adjust the size
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  Text(
+                    'IT Telkom Purwokerto',
+                    style: TextStyle(
+                      fontSize: 14, // Adjust the size
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
               ),
             ],
-            title: const SizedBox
-                .shrink(), // To center the title if any, use SizedBox.shrink()
-            centerTitle: true, // Center the title if any
           ),
         ),
+        actions: [
+          PopupMenuButton<String>(
+            onSelected: (String result) {
+              switch (result) {
+                case 'home':
+                  Navigator.pushNamed(context, '/home');
+                  break;
+                case 'repository':
+                  Navigator.pushNamed(context, '/repository');
+                  break;
+                case 'reservation':
+                  Navigator.pushNamed(context, '/reservation');
+                  break;
+                // Add other cases here
+              }
+            },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+              const PopupMenuItem<String>(
+                value: 'home',
+                child: Text('Home'),
+              ),
+              const PopupMenuItem<String>(
+                value: 'repository',
+                child: Text('Repositori Surat'),
+              ),
+              const PopupMenuItem<String>(
+                value: 'reservation',
+                child: Text('Room Reservation'),
+              ),
+              // Add other menu items here
+            ],
+            icon: const Icon(Icons.menu, color: Colors.white),
+          ),
+        ],
+        title: const SizedBox.shrink(),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -76,11 +112,9 @@ class HomePage extends StatelessWidget {
                   ),
                   const SizedBox(width: 8.0),
                   ElevatedButton(
-                    onPressed: () {
-                      // Handle search button press
-                    },
+                    onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFAA0000), // Custom color
+                      backgroundColor: const Color.fromRGBO(170, 0, 0, 1.0),
                       padding: const EdgeInsets.all(16.0),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
@@ -100,7 +134,7 @@ class HomePage extends StatelessWidget {
                   mainAxisSpacing: 16.0,
                   childAspectRatio: 0.7,
                 ),
-                itemCount: 4, // Adjust the item count as needed
+                itemCount: 4,
                 itemBuilder: (context, index) {
                   return Container(
                     decoration: BoxDecoration(
@@ -111,15 +145,14 @@ class HomePage extends StatelessWidget {
                           color: Colors.grey.withOpacity(0.5),
                           spreadRadius: 1,
                           blurRadius: 5,
-                          offset:
-                              const Offset(0, 3), // changes position of shadow
+                          offset: const Offset(0, 3),
                         ),
                       ],
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
                       child: Image.asset(
-                        'assets/img/book${index + 1}.png', // Adjust the image path as needed
+                        'assets/img/book${index + 1}.png',
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -132,10 +165,4 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-}
-
-void main() {
-  runApp(const MaterialApp(
-    home: HomePage(),
-  ));
 }
