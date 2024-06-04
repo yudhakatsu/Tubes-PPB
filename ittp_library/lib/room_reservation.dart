@@ -24,12 +24,12 @@ class _RoomReservationState extends State<RoomReservation> {
         defaultTargetPlatform == TargetPlatform.linux ||
         defaultTargetPlatform == TargetPlatform.macOS) {
       // Open URL in browser for non-mobile platforms
-      html.window.open('https://flutter.dev', '_blank');
+      html.window.open('http://ittp.link/reservasikunjungan', '_blank');
     } else {
       // Initialize WebView controller for mobile platforms
       _controller = WebViewController()
         ..setJavaScriptMode(JavaScriptMode.unrestricted)
-        ..loadRequest(Uri.parse('https://flutter.dev'));
+        ..loadRequest(Uri.parse('http://ittp.link/reservasikunjungan'));
     }
   }
 
