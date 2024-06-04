@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Row(
             children: [
-              Container(
+              SizedBox(
                 height: 40,
                 width: 40,
                 child: Image.asset(
@@ -49,9 +49,6 @@ class HomePage extends StatelessWidget {
           PopupMenuButton<String>(
             onSelected: (String result) {
               switch (result) {
-                case 'home':
-                  Navigator.pushNamed(context, '/home');
-                  break;
                 case 'repository':
                   Navigator.pushNamed(context, '/repository');
                   break;
@@ -62,10 +59,6 @@ class HomePage extends StatelessWidget {
               }
             },
             itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
-              const PopupMenuItem<String>(
-                value: 'home',
-                child: Text('Home'),
-              ),
               const PopupMenuItem<String>(
                 value: 'repository',
                 child: Text('Repositori Surat'),
