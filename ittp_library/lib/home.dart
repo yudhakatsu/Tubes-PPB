@@ -50,10 +50,10 @@ class HomePage extends StatelessWidget {
             onSelected: (String result) {
               switch (result) {
                 case 'repository':
-                  Navigator.pushNamed(context, '/repository');
+                  Navigator.pushReplacementNamed(context, '/repository');
                   break;
                 case 'reservation':
-                  Navigator.pushNamed(context, '/reservation');
+                  Navigator.pushReplacementNamed(context, '/reservation');
                   break;
                 // Add other cases here
               }
