@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget {
                   Navigator.pushReplacementNamed(context, '/repository');
                   break;
                 case 'reservation':
-                  Navigator.pushReplacementNamed(context, '/reservation');
+                  Navigator.pushNamed(context, '/reservation');
                   break;
                 // Add other cases here
               }
